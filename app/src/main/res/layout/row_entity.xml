@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/entityRowSource"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Chase"/>
+    
+    <EditText
+        android:id="@+id/entityRowAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:layout_weight="1"
+        android:text="1933.86"/>
+
+    <TextView
+        android:id="@+id/entityRowTotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="13846.67"
+        />
+
+    <TextView
+        android:id="@+id/entityRowDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="2/21/2016"
+        />
+
+    <TextView
+        android:id="@+id/entityRowNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="N/A"
+        />
+
+</LinearLayout>
