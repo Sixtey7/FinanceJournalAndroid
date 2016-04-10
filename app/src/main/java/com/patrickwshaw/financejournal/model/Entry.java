@@ -76,7 +76,7 @@ public class Entry {
     public Entry(Cursor cursor) {
         logger.logEnter("constructor(cursor)");
 
-        this.id = cursor.getInt(cursor.getColumnIndex(DBConstants.ENTITY_ID_COLUMN_NAME));
+        this.id = cursor.getInt(cursor.getColumnIndex(DBConstants.ENTRY_ID_COLUMN_NAME));
         this.source = cursor.getString(cursor.getColumnIndex(DBConstants.SOURCE_COLUMN_NAME));
         this.amount = cursor.getFloat(cursor.getColumnIndex(DBConstants.AMOUNT_COLUMN_NAME));
         this.notes = cursor.getString(cursor.getColumnIndex(DBConstants.NOTES_COLUMN_NAME));
@@ -101,7 +101,7 @@ public class Entry {
         logger.logEnter("buildContentValues");
         ContentValues returnValues = new ContentValues();
 
-        returnValues.put(DBConstants.ENTITY_ID_COLUMN_NAME, this.getId());
+        returnValues.put(DBConstants.ENTRY_ID_COLUMN_NAME, this.getId());
         returnValues.put(DBConstants.DATE_COLUMN_NAME, this.getDate().getTime().getTime());
 
         if (this.getSource() != null) {

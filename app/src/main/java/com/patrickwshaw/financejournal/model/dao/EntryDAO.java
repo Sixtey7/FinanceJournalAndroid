@@ -3,7 +3,6 @@ package com.patrickwshaw.financejournal.model.dao;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.patrickwshaw.financejournal.constants.DBConstants;
 import com.patrickwshaw.financejournal.model.Entry;
@@ -34,7 +33,7 @@ public class EntryDAO {
     public int getNextId() {
         logger.logEnter("getNextId");
 
-        String GET_MAX_ID_SQL = "SELECT MAX(" + DBConstants.ENTITY_ID_COLUMN_NAME + ") FROM " + DBConstants.ENTITY_TABLE_NAME + ";";
+        String GET_MAX_ID_SQL = "SELECT MAX(" + DBConstants.ENTRY_ID_COLUMN_NAME + ") FROM " + DBConstants.ENTRY_TABLE_NAME + ";";
 
         logger.d(GET_MAX_ID_SQL);
 
@@ -63,8 +62,8 @@ public class EntryDAO {
         logger.logEnter("get(int)");
         Entry valueToReturn = null;
 
-        String GET_ENTRY_SQL = "SELECT * FROM " + DBConstants.ENTITY_TABLE_NAME +
-                " WHERE " + DBConstants.ENTITY_ID_COLUMN_NAME + " = " + idToGet + ";";
+        String GET_ENTRY_SQL = "SELECT * FROM " + DBConstants.ENTRY_TABLE_NAME +
+                " WHERE " + DBConstants.ENTRY_ID_COLUMN_NAME + " = " + idToGet + ";";
 
         logger.d(GET_ENTRY_SQL);
 
@@ -90,7 +89,7 @@ public class EntryDAO {
         logger.logEnter("getAll");
         List<Entry> listToReturn = new ArrayList<>();
 
-        String GET_ALL_SQL = "SELECT * FROM " + DBConstants.ENTITY_TABLE_NAME + ";";
+        String GET_ALL_SQL = "SELECT * FROM " + DBConstants.ENTRY_TABLE_NAME + ";";
 
         Cursor cursor = dbh.getReadableDatabase().rawQuery(GET_ALL_SQL, null);
 
@@ -132,11 +131,11 @@ public class EntryDAO {
         if (this.keyExists(entryToSave.getId())) {
             //we're updating
             logger.d("Creating a new Entry!");
-            returnValue = dbh.getWritableDatabase().insert(DBConstants.ENTITY_TABLE_NAME, null, contentValues);
+            returnValue = dbh.getWritableDatabase().insert(DBConstants.ENTRY_TABLE_NAME, null, contentValues);
         }
         else {
             logger.d("Updating Entry with id: " + entryToSave.getId());
-            returnValue = dbh.getWritableDatabase().update(DBConstants.ENTITY_TABLE_NAME, contentValues, DBConstants.ENTITY_ID_COLUMN_NAME + " = ?", new String[]{String.valueOf(entryToSave.getId())});
+            returnValue = dbh.getWritableDatabase().update(DBConstants.ENTRY_TABLE_NAME, contentValues, DBConstants.ENTRY_ID_COLUMN_NAME + " = ?", new String[]{String.valueOf(entryToSave.getId())});
         }
 
         logger.logExit();
@@ -146,7 +145,7 @@ public class EntryDAO {
     public boolean delete(int idToDelete) {
         logger.logEnter("delete(idToDelete)");
 
-        String DELETE_ENTRY_SQL = "DELETE FROM " + DBConstants.ENTITY_TABLE_NAME + " WHERE " + DBConstants.ENTITY_ID_COLUMN_NAME + " = " + idToDelete + ";";
+        String DELETE_ENTRY_SQL = "DELETE FROM " + DBConstants.ENTRY_TABLE_NAME + " WHERE " + DBConstants.ENTRY_ID_COLUMN_NAME + " = " + idToDelete + ";";
 
         logger.d(DELETE_ENTRY_SQL);
 
@@ -159,7 +158,7 @@ public class EntryDAO {
     public void deleteAll() {
         logger.logEnter("deleteAll");
 
-        String DELETE_ALL_SQL = "DELETE FROM " + DBConstants.ENTITY_TABLE_NAME + ";";
+        String DELETE_ALL_SQL = "DELETE FROM " + DBConstants.ENTRY_TABLE_NAME + ";";
 
         logger.d(DELETE_ALL_SQL);
 

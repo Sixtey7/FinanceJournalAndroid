@@ -11,9 +11,9 @@ public final class DBConstants {
     /**
      * Entity Table
      */
-    public static final String ENTITY_TABLE_NAME = "Entity";
+    public static final String ENTRY_TABLE_NAME = "Entity";
 
-    public static final String ENTITY_ID_COLUMN_NAME = "ID";
+    public static final String ENTRY_ID_COLUMN_NAME = "ID";
     public static final String SOURCE_COLUMN_NAME = "SOURCE";
     public static final String AMOUNT_COLUMN_NAME = "AMOUNT";
     public static final String DATE_COLUMN_NAME = "DATE";
@@ -21,8 +21,8 @@ public final class DBConstants {
     public static final String ESTIMATE_COLUMN_NAME = "ESTIMATE";
 
     public static String createTableCreateText() {
-        return "CREATE TABLE " + ENTITY_TABLE_NAME + " (" +
-            ENTITY_ID_COLUMN_NAME + " INTEGER PRIMARY KEY, " +
+        return "CREATE TABLE " + ENTRY_TABLE_NAME + " (" +
+                ENTRY_ID_COLUMN_NAME + " INTEGER PRIMARY KEY, " +
                 SOURCE_COLUMN_NAME + " TEXT, " +
                 AMOUNT_COLUMN_NAME + " REAL, " +
                 DATE_COLUMN_NAME + " REAL, " +
@@ -30,6 +30,6 @@ public final class DBConstants {
     }
 
     public static String createDropTableText() {
-        return "DROP TABLE IF EXISTS " + ENTITY_TABLE_NAME + ";";
+        return "DROP TABLE IF EXISTS " + ENTRY_TABLE_NAME + ";";
     }
 }
