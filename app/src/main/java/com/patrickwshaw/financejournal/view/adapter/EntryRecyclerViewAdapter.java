@@ -1,11 +1,13 @@
 package com.patrickwshaw.financejournal.view.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.patrickwshaw.financejournal.R;
 import com.patrickwshaw.financejournal.model.Entry;
@@ -26,12 +28,14 @@ public class EntryRecyclerViewAdapter extends RecyclerView.Adapter<EntryRecycler
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
 
 
-    private List<Entry> entryList = new ArrayList<Entry>();
+    protected List<Entry> entryList = new ArrayList<Entry>();
+    protected Context context;
 
-    public EntryRecyclerViewAdapter(List<Entry> entryList) {
+    public EntryRecyclerViewAdapter(Context context, List<Entry> entryList) {
         logger.logEnter("constructor");
 
         this.entryList = entryList;
+        this.context = context;
 
         logger.logExit();
     }
@@ -82,7 +86,7 @@ public class EntryRecyclerViewAdapter extends RecyclerView.Adapter<EntryRecycler
         return entryList.size();
     }
     
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView source;
         public EditText amount;
         public TextView total;
@@ -96,7 +100,14 @@ public class EntryRecyclerViewAdapter extends RecyclerView.Adapter<EntryRecycler
             total = (TextView) itemLayoutView.findViewById(R.id.entityRowTotal);
             date = (TextView) itemLayoutView.findViewById(R.id.entityRowDate);
             notes = (TextView) itemLayoutView.findViewById(R.id.entityRowNotes);
+        }
 
+        @Override
+        public void onClick(View v) {
+            int position = getLayoutPosition(); // gets item position
+            Entry user = entryList.get(position);
+            // We can access the data within the views
+            Toast.makeText(context, source.getText(), Toast.LENGTH_SHORT).show();
         }
     }
 }
