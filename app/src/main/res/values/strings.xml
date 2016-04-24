@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FinanceJournal</string>
+
+    <string name="view_entries_fragment_title">View Entries</string>
 </resources>

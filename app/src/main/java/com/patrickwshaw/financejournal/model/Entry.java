@@ -16,6 +16,7 @@ public class Entry {
     private Integer id;
     private String source;
     private Float amount;
+    private Float total;
     private Calendar date;
     private Boolean estimate;
     private String notes;
@@ -46,6 +47,10 @@ public class Entry {
         this.amount = amount;
     }
 
+    public Float getTotal() { return total; }
+
+    public void setTotal(Float total) { this.total = total; }
+
     public Calendar getDate() {
         return date;
     }
@@ -68,6 +73,13 @@ public class Entry {
 
     public void setEstimate(Boolean estimate) {
         this.estimate = estimate;
+    }
+
+    /**
+     * Default Constructor
+     */
+    public Entry() {
+        //default constructor
     }
 
     /**
